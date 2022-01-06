@@ -1,5 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
+import Home from "@/views/Home";
+import HomeGlobal from "@/views/HomeGlobal";
+import HomeTag from "@/views/HomeTag";
 
 Vue.use(Router);
 
@@ -7,12 +10,17 @@ export default new Router({
   routes: [
     {
       path: "/",
-      component: () => import("@/views/Home.vue"),
+      component: Home,
       children: [
         {
           path: "",
           name: "home",
-          component: () => import("@/views/Home"),
+          component: HomeGlobal,
+        },
+        {
+          path: "tag/:tag",
+          name: "home-tag",
+          component: HomeTag,
         },
       ],
     },
